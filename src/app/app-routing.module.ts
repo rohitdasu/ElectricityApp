@@ -11,6 +11,26 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'cable',
+    loadChildren: () => import('./cable/cable.module').then( m => m.CablePageModule)
+  },
+  {
+    path: 'load',
+    loadChildren: () => import('./load/load.module').then( m => m.LoadPageModule)
+  },
+  {
+    path: 'history',
+    loadChildren: () => import('./history/history.module').then( m => m.HistoryPageModule)
+  },
+  {
+    path: 'placements',
+    loadChildren: () => import('./placements/placements.module').then( m => m.PlacementsPageModule)
+  },
+  {
+    path: 'laying',
+    loadChildren: () => import('./laying/laying.module').then( m => m.LayingPageModule)
+  },
 ];
 
 @NgModule({

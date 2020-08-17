@@ -1,0 +1,56 @@
+<ion-content [fullscreen]="true" mode="ios">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start" mode="md" style="color: white;">
+      <ion-back-button defaultHref="/"> </ion-back-button>
+    </ion-buttons>
+    <ion-title size="large" slot="end" class="toolbarText">
+      GET LOAD
+    </ion-title>
+  </ion-toolbar>
+
+  <ion-card class="card" mode="ios">
+    <ion-card-content>
+      <ion-item> <ion-input placeholder="Power"></ion-input>V</ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-text>
+          Cable Type
+        </ion-text>
+        &nbsp;&nbsp;&nbsp;AI&nbsp;
+        <ion-toggle name="cantaloupe" color="medium" checked></ion-toggle>
+        &nbsp; Cu &nbsp;&nbsp;&nbsp;
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="card" mode="ios">
+    <ion-card-content>
+      <ion-item> <ion-input placeholder="Length"></ion-input>M </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="card" mode="ios">
+    <ion-card-content style="text-align: left;">
+      <ion-text slot="start">Placement</ion-text>
+      <ion-icon
+        slot="end"
+        size="medium"
+        name="chevron-forward-outline"
+      ></ion-icon>
+    </ion-card-content>
+  </ion-card>
+
+  <div style="text-align: center; padding: 2%;">
+    <ion-text>*Placement Info*</ion-text>
+  </div>
+
+  <div>
+    <ion-button style="width: 80%; margin: 10%;" color="warning">
+      CALCULATE
+    </ion-button>
+  </div>
+</ion-content>
