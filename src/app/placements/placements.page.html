@@ -1,9 +1,13 @@
 <ion-content [fullscreen]="true" mode="ios">
   <ion-toolbar class="toolbar">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/" mode="md" color="light"></ion-back-button>
+      <ion-back-button
+        defaultHref="/"
+        mode="md"
+        color="light"
+      ></ion-back-button>
     </ion-buttons>
-    
+
     <ion-title size="large" slot="end">
       <span class="toolbarText">PLACEMENT</span>
     </ion-title>
@@ -12,7 +16,7 @@
   <ion-label class="head">
     SELECT FROM
   </ion-label>
-  <ion-list style="margin-top:20%">
+  <ion-list style="margin-top: 20%;">
     <ion-item (click)="gotoLayings()">
       <ion-label>
         Åtkomlig i hålrum i byggnad

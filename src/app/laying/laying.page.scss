@@ -1,21 +1,25 @@
 .toolbar {
-    --background: #ffc409;
-    height: 200px;
-  }
-  .toolbarText {
-    color: white;
-    font-family: 'Courier';
-    font-size: x-large;
-  }
-  
-  .card {
-    height: 100px;
-    text-align: center;
-    padding:1rem;
-  }
-  
-  .head{
-    padding:6%;
-    position: absolute;
-    font-size: medium;
-  }
+  --background: #ffc409;
+  height: 200px;
+}
+.toolbarText {
+  color: white;
+  font-family: "Courier";
+  font-size: x-large;
+}
+
+.card {
+  height: 100px;
+  text-align: center;
+  padding: 1rem;
+}
+
+.head {
+  padding: 6%;
+  position: absolute;
+  font-size: medium;
+}
+ion-content {
+  --background: #fff url("../../assets/wires.png") no-repeat center center /
+    cover;
+}
