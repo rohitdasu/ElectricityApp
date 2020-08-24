@@ -14,5 +14,7 @@ export class HomePage {
   gotoLoad() {
     this._router.navigate(['/load']);
   }
-  gotoHistory() {}
+  gotoHistory() {
+    this._router.navigate(['/history']);
+  }
 }

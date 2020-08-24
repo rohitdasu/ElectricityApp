@@ -8,12 +8,15 @@ import { LoadPageRoutingModule } from './load-routing.module';
 
 import { LoadPage } from './load.page';
 
+import {MatDialogModule} from '@angular/material/dialog';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LoadPageRoutingModule
+    LoadPageRoutingModule,
+    MatDialogModule
   ],
   declarations: [LoadPage]
 })

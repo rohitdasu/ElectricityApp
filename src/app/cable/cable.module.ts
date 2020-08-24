@@ -8,12 +8,15 @@ import { CablePageRoutingModule } from './cable-routing.module';
 
 import { CablePage } from './cable.page';
 
+import {MatDialogModule} from '@angular/material/dialog';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CablePageRoutingModule
+    CablePageRoutingModule,
+    MatDialogModule
   ],
   declarations: [CablePage]
 })

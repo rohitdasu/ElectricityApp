@@ -10,36 +10,47 @@
 
   <ion-card class="card" mode="ios">
     <ion-card-content>
-      <ion-item> <ion-input placeholder="Power"></ion-input>W </ion-item>
+      <ion-item> 
+        <ion-label>
+          Power
+        </ion-label>
+        <ion-input></ion-input>W 
+      </ion-item>
     </ion-card-content>
   </ion-card>
 
   <ion-card>
     <ion-card-content>
       <ion-item>
-        <ion-text>
+        <ion-label>
           Cable Type
-        </ion-text>
+        </ion-label>
         &nbsp;&nbsp;&nbsp;AI&nbsp;
         <ion-toggle name="cantaloupe" color="medium" checked></ion-toggle>
-        &nbsp; Cu &nbsp;&nbsp;&nbsp;
+        &nbsp;Cu&nbsp;&nbsp;&nbsp;
       </ion-item>
     </ion-card-content>
   </ion-card>
 
   <ion-card class="card" mode="ios">
     <ion-card-content>
-      <ion-item> <ion-input placeholder="Length"></ion-input>M </ion-item>
+      <ion-item> 
+        <ion-label>
+          Length
+        </ion-label>
+        <ion-input></ion-input>M 
+      </ion-item>
     </ion-card-content>
   </ion-card>
 
-  <ion-card class="card" mode="ios">
+  <ion-card (click)="gotoPlacement()" class="card" mode="ios">
     <ion-card-content style="text-align: left;">
-      <ion-text slot="start">Placement</ion-text>
+      <ion-label style="color:black" slot="start">Placement</ion-label>
       <ion-icon
         slot="end"
-        size="medium"
+        size="large"
         name="chevron-forward-outline"
+        style="float:right;"
       ></ion-icon>
     </ion-card-content>
   </ion-card>
@@ -49,7 +60,7 @@
   </div>
 
   <div>
-    <ion-button style="width: 80%; margin: 10%;" color="warning">
+    <ion-button style="width: 80%; margin: 10%;" (click)="openDialog()" color="warning">
       CALCULATE
     </ion-button>
   </div>

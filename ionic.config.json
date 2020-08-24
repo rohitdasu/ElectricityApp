@@ -1,5 +1,7 @@
 {
   "name": "Svensk elinstallation",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

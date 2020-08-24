@@ -1,9 +1,33 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>laying</ion-title>
+<ion-content [fullscreen]="true" mode="ios">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" mode="md" color="light"></ion-back-button>
+    </ion-buttons>
+    
+    <ion-title size="large" slot="end">
+      <span class="toolbarText">LAYINGS PROCEDURE</span>
+    </ion-title>
   </ion-toolbar>
-</ion-header>
 
-<ion-content>
+  <ion-list style="padding:5%">
+    <ion-item>
+      <ion-label>
+        Procedure 1
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        Procedure 2
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        Procedure 3
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
 
 </ion-content>

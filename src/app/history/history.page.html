@@ -1,9 +1,84 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>history</ion-title>
+<ion-content [fullscreen]="true" mode="ios">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/"
+        mode="md"
+        color="light"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title size="large" slot="end">
+      <span class="toolbarText">HISTORY</span>
+    </ion-title>
   </ion-toolbar>
-</ion-header>
 
-<ion-content>
+  <ion-list>
+    <ion-item lines="none">
+      <ion-label color="warning" style="font-size: large;">
+        Result 1:
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-text>
+        Ara :16mm^2
+      </ion-text>
+    </ion-item>
 
+    <ion-item lines="none">
+      <ion-text>
+        Cable BPC : Cu
+      </ion-text>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-text>
+        Length : 473
+      </ion-text>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-text>
+        Placement Info
+      </ion-text>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-text>
+        Max Power 1500 W
+      </ion-text>
+    </ion-item>
+    <ion-item-divider></ion-item-divider>
+    <ion-item lines="none">
+      <ion-label color="warning" style="font-size: large;">
+        Result 2:
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-text>
+        Ara :16mm^2
+      </ion-text>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-text>
+        Cable BPC : Cu
+      </ion-text>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-text>
+        Length : 473
+      </ion-text>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-text>
+        Placement Info
+      </ion-text>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-text>
+        Max Power 1500 W
+      </ion-text>
+    </ion-item>
+  </ion-list>
 </ion-content>
