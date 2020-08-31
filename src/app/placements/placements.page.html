@@ -13,50 +13,10 @@
     </ion-title>
   </ion-toolbar>
 
-  <ion-label class="head">
-    SELECT FROM
-  </ion-label>
-  <ion-list style="margin-top: 20%;">
-    <ion-item (click)="gotoLayings()">
-      <ion-label>
-        Åtkomlig i hålrum i byggnad
-      </ion-label>
-      <ion-icon name="chevron-forward-outline"></ion-icon>
-    </ion-item>
-    <ion-item (click)="gotoLayings()">
-      <ion-label>
-        Inte åtkomlig i hålrum i byggnad
-      </ion-label>
-      <ion-icon name="chevron-forward-outline"></ion-icon>
-    </ion-item>
-    <ion-item (click)="gotoLayings()">
-      <ion-label>
-        I kabelkanal
-      </ion-label>
-      <ion-icon name="chevron-forward-outline"></ion-icon>
-    </ion-item>
-    <ion-item (click)="gotoLayings()">
-      <ion-label>
-        I mark
-      </ion-label>
-      <ion-icon name="chevron-forward-outline"></ion-icon>
-    </ion-item>
-    <ion-item (click)="gotoLayings()">
-      <ion-label>
-        Dolt i byggnadsdel
-      </ion-label>
-      <ion-icon name="chevron-forward-outline"></ion-icon>
-    </ion-item>
-    <ion-item (click)="gotoLayings()">
-      <ion-label>
-        Öppet på byggnad
-      </ion-label>
-      <ion-icon name="chevron-forward-outline"></ion-icon>
-    </ion-item>
-    <ion-item (click)="gotoLayings()">
-      <ion-label>
-        Fritt i luft
-      </ion-label>
+  <ion-label class="head"> SELECT FROM </ion-label>
+  <ion-list style="margin-top: 20%">
+    <ion-item class="ps" *ngFor="let n of data" (click)="gotoLayings(n)">
+      <ion-label> {{n.name}} </ion-label>
       <ion-icon name="chevron-forward-outline"></ion-icon>
     </ion-item>
   </ion-list>

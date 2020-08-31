@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true" mode="ios">
   <ion-toolbar class="toolbar">
-    <ion-buttons slot="start" mode="md" style="color: white;">
+    <ion-buttons slot="start" mode="md" style="color: white">
       <ion-back-button defaultHref="/"> </ion-back-button>
     </ion-buttons>
     <ion-title size="large" slot="end" class="toolbarText">
@@ -11,10 +11,8 @@
   <ion-card class="card" mode="ios">
     <ion-card-content>
       <ion-item>
-        <ion-label>
-          Power
-        </ion-label>
-        <ion-input></ion-input>W
+        <ion-label> Power </ion-label>
+        <ion-input [(ngModel)]="power"></ion-input>W
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -22,11 +20,14 @@
   <ion-card>
     <ion-card-content>
       <ion-item>
-        <ion-label>
-          Voltage
-        </ion-label>
+        <ion-label> Voltage </ion-label>
         &nbsp;&nbsp;&nbsp;240v&nbsp;
-        <ion-toggle name="cantaloupe" color="medium" checked></ion-toggle>
+        <ion-toggle
+          (ionChange)="voltageFunc($event)"
+          name="cantaloupe"
+          color="medium"
+          checked
+        ></ion-toggle>
         &nbsp;400v&nbsp;&nbsp;&nbsp;
       </ion-item>
     </ion-card-content>
@@ -35,10 +36,8 @@
   <ion-card class="card" mode="ios">
     <ion-card-content>
       <ion-item>
-        <ion-label>
-          Conductor
-        </ion-label>
-        <ion-input></ion-input>
+        <ion-label> Conductor </ion-label>
+        <ion-input [(ngModel)]="conductor"></ion-input>
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -46,11 +45,14 @@
   <ion-card>
     <ion-card-content>
       <ion-item>
-        <ion-label>
-          Cover
-        </ion-label>
+        <ion-label> Cover </ion-label>
         &nbsp;&nbsp;&nbsp;PVC&nbsp;
-        <ion-toggle name="cantaloupe" color="medium" checked></ion-toggle>
+        <ion-toggle
+          (ionChange)="coverFunc($event)"
+          name="cantaloupe"
+          color="medium"
+          checked
+        ></ion-toggle>
         &nbsp;PEX&nbsp;&nbsp;&nbsp;
       </ion-item>
     </ion-card-content>
@@ -59,11 +61,14 @@
   <ion-card>
     <ion-card-content>
       <ion-item>
-        <ion-label>
-          Phase
-        </ion-label>
+        <ion-label> Phase </ion-label>
         &nbsp;&nbsp;&nbsp;1&nbsp;
-        <ion-toggle name="cantaloupe" color="medium" checked></ion-toggle>
+        <ion-toggle
+          (ionChange)="phaseFunc($event)"
+          name="cantaloupe"
+          color="medium"
+          checked
+        ></ion-toggle>
         &nbsp;3&nbsp;&nbsp;&nbsp;
       </ion-item>
     </ion-card-content>
@@ -72,11 +77,14 @@
   <ion-card>
     <ion-card-content>
       <ion-item>
-        <ion-label>
-          Cable Type
-        </ion-label>
+        <ion-label> Cable Type </ion-label>
         &nbsp;&nbsp;&nbsp;AI&nbsp;
-        <ion-toggle name="cantaloupe" color="medium" checked></ion-toggle>
+        <ion-toggle
+          (ionChange)="cableFunc($event)"
+          name="cantaloupe"
+          color="medium"
+          checked
+        ></ion-toggle>
         &nbsp;Cu&nbsp;&nbsp;&nbsp;
       </ion-item>
     </ion-card-content>
@@ -85,33 +93,31 @@
   <ion-card class="card" mode="ios">
     <ion-card-content>
       <ion-item>
-        <ion-label>
-          Length
-        </ion-label>
-        <ion-input></ion-input>M
+        <ion-label> Length </ion-label>
+        <ion-input [(ngModel)]="length"></ion-input>M
       </ion-item>
     </ion-card-content>
   </ion-card>
 
   <ion-card (click)="gotoPlacement()" class="card" mode="ios">
-    <ion-card-content style="text-align: left;">
-      <ion-label style="color: black;" slot="start">Placement</ion-label>
+    <ion-card-content style="text-align: left">
+      <ion-label style="color: black" slot="start">Placement</ion-label>
       <ion-icon
         slot="end"
         size="large"
         name="chevron-forward-outline"
-        style="float: right;"
+        style="float: right"
       ></ion-icon>
     </ion-card-content>
   </ion-card>
 
-  <div style="text-align: center; padding: 2%;">
+  <div style="text-align: center; padding: 2%">
     <ion-text>*Info about selected placement*</ion-text>
   </div>
 
   <div>
     <ion-button
-      style="width: 80%; margin: 10%;"
+      style="width: 80%; margin: 10%"
       (click)="openDialog()"
       color="warning"
     >
