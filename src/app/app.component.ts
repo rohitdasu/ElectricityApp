@@ -14,7 +14,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     public toastController: ToastController,
-    public alertCtrl:AlertController
+    public alertCtrl: AlertController
   ) {
     this.initializeApp();
   }
@@ -36,7 +36,6 @@ export class AppComponent {
 
         await alert.present();
       }
-
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });

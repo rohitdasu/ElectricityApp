@@ -8,22 +8,35 @@
     </ion-title>
   </ion-toolbar>
 
-  <ion-card class="card" mode="ios">
+  <!-- <ion-card class="card" mode="ios">
     <ion-card-content>
       <ion-item>
         <ion-label> Power </ion-label>
         <ion-input [(ngModel)]="power"></ion-input>W
       </ion-item>
     </ion-card-content>
+  </ion-card> -->
+  <ion-card (click)="gotoPlacement()" class="card" mode="ios">
+    <ion-card-content style="text-align: left">
+      <ion-label style="color: black" slot="start">Placement</ion-label
+      >&nbsp;&nbsp;
+      <ion-text>{{placement}}</ion-text>
+      <ion-icon
+        slot="end"
+        size="large"
+        name="chevron-forward-outline"
+        style="float: right"
+      ></ion-icon>
+    </ion-card-content>
   </ion-card>
-
+  
   <ion-card>
     <ion-card-content>
       <ion-item>
         <ion-label> Voltage </ion-label>
         &nbsp;&nbsp;&nbsp;240v&nbsp;
         <ion-toggle
-          (ionChange)="voltageFunc($event)"
+          [(ngModel)]="voltage"
           name="cantaloupe"
           color="medium"
           checked
@@ -33,11 +46,18 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card class="card" mode="ios">
+  <ion-card>
     <ion-card-content>
       <ion-item>
         <ion-label> Conductor </ion-label>
-        <ion-input [(ngModel)]="conductor"></ion-input>
+        &nbsp;&nbsp;&nbsp;SINGLE&nbsp;
+        <ion-toggle
+          name="cantaloupe"
+          [(ngModel)]="conductor"
+          color="medium"
+          checked
+        ></ion-toggle>
+        &nbsp;MULTI&nbsp;&nbsp;&nbsp;
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -48,8 +68,8 @@
         <ion-label> Cover </ion-label>
         &nbsp;&nbsp;&nbsp;PVC&nbsp;
         <ion-toggle
-          (ionChange)="coverFunc($event)"
           name="cantaloupe"
+          [(ngModel)]="cover"
           color="medium"
           checked
         ></ion-toggle>
@@ -64,8 +84,8 @@
         <ion-label> Phase </ion-label>
         &nbsp;&nbsp;&nbsp;1&nbsp;
         <ion-toggle
-          (ionChange)="phaseFunc($event)"
           name="cantaloupe"
+          [(ngModel)]="phase"
           color="medium"
           checked
         ></ion-toggle>
@@ -78,38 +98,28 @@
     <ion-card-content>
       <ion-item>
         <ion-label> Cable Type </ion-label>
-        &nbsp;&nbsp;&nbsp;AI&nbsp;
+        &nbsp;&nbsp;&nbsp;AL&nbsp;
         <ion-toggle
-          (ionChange)="cableFunc($event)"
           name="cantaloupe"
+          [(ngModel)]="cable_type"
           color="medium"
           checked
         ></ion-toggle>
-        &nbsp;Cu&nbsp;&nbsp;&nbsp;
+        &nbsp;CU&nbsp;&nbsp;&nbsp;
       </ion-item>
     </ion-card-content>
   </ion-card>
 
-  <ion-card class="card" mode="ios">
+  <!-- <ion-card class="card" mode="ios">
     <ion-card-content>
       <ion-item>
         <ion-label> Length </ion-label>
         <ion-input [(ngModel)]="length"></ion-input>M
       </ion-item>
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 
-  <ion-card (click)="gotoPlacement()" class="card" mode="ios">
-    <ion-card-content style="text-align: left">
-      <ion-label style="color: black" slot="start">Placement</ion-label>
-      <ion-icon
-        slot="end"
-        size="large"
-        name="chevron-forward-outline"
-        style="float: right"
-      ></ion-icon>
-    </ion-card-content>
-  </ion-card>
+  
 
   <div style="text-align: center; padding: 2%">
     <ion-text>*Info about selected placement*</ion-text>
@@ -118,8 +128,9 @@
   <div>
     <ion-button
       style="width: 80%; margin: 10%"
-      (click)="openDialog()"
+      (click)="presentModal()"
       color="warning"
+      [disabled]="placement==undefined || placement==''"
     >
       CALCULATE
     </ion-button>

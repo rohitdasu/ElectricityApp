@@ -31,6 +31,14 @@ const routes: Routes = [
     path: 'laying',
     loadChildren: () => import('./laying/laying.module').then( m => m.LayingPageModule)
   },
+  {
+    path: 'result',
+    loadChildren: () => import('./result/result.module').then( m => m.ResultPageModule)
+  },
+  {
+    path: 'result-load',
+    loadChildren: () => import('./result-load/result-load.module').then( m => m.ResultLoadPageModule)
+  },
 ];
 
 @NgModule({

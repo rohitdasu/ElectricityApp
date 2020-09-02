@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true" mode="ios">
   <ion-toolbar class="toolbar">
-    <ion-buttons slot="start" mode="md" style="color: white;">
+    <ion-buttons slot="start" mode="md" style="color: white">
       <ion-back-button defaultHref="/"> </ion-back-button>
     </ion-buttons>
     <ion-title size="large" slot="end" class="toolbarText">
@@ -8,11 +8,25 @@
     </ion-title>
   </ion-toolbar>
 
+  <ion-card (click)="gotoPlacement()" class="card" mode="ios">
+    <ion-card-content style="text-align: left">
+      <ion-label style="color: black" slot="start">Placement</ion-label
+      >&nbsp;&nbsp;
+      <ion-text>{{placement}}</ion-text>
+      <ion-icon
+        slot="end"
+        size="large"
+        name="chevron-forward-outline"
+        style="float: right"
+      ></ion-icon>
+    </ion-card-content>
+  </ion-card>
+
   <ion-card class="card" mode="ios">
     <ion-card-content>
       <ion-item>
-        <ion-label>Ara</ion-label>
-        <ion-input></ion-input>V
+        <ion-label>Area</ion-label>
+        <ion-input [(ngModel)]="area"></ion-input>
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -20,21 +34,15 @@
   <ion-card>
     <ion-card-content>
       <ion-item>
-        <ion-label>
-          Voltage
-        </ion-label>
-        &nbsp;&nbsp;&nbsp;240V&nbsp;
-        <ion-toggle name="cantaloupe" color="medium" checked></ion-toggle>
-        &nbsp;400V&nbsp;&nbsp;&nbsp;
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card class="card" mode="ios">
-    <ion-card-content>
-      <ion-item>
-        <ion-label>Conductor</ion-label>
-        <ion-input></ion-input>
+        <ion-label> Voltage </ion-label>
+        &nbsp;&nbsp;&nbsp;240v&nbsp;
+        <ion-toggle
+          [(ngModel)]="voltage"
+          name="cantaloupe"
+          color="medium"
+          checked
+        ></ion-toggle>
+        &nbsp;400v&nbsp;&nbsp;&nbsp;
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -42,11 +50,30 @@
   <ion-card>
     <ion-card-content>
       <ion-item>
-        <ion-label>
-          Cover
-        </ion-label>
+        <ion-label> Conductor </ion-label>
+        &nbsp;&nbsp;&nbsp;SINGLE&nbsp;
+        <ion-toggle
+          name="cantaloupe"
+          [(ngModel)]="conductor"
+          color="medium"
+          checked
+        ></ion-toggle>
+        &nbsp;MULTI&nbsp;&nbsp;&nbsp;
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label> Cover </ion-label>
         &nbsp;&nbsp;&nbsp;PVC&nbsp;
-        <ion-toggle name="cantaloupe" color="medium" checked></ion-toggle>
+        <ion-toggle
+          name="cantaloupe"
+          [(ngModel)]="cover"
+          color="medium"
+          checked
+        ></ion-toggle>
         &nbsp;PEX&nbsp;&nbsp;&nbsp;
       </ion-item>
     </ion-card-content>
@@ -55,11 +82,14 @@
   <ion-card>
     <ion-card-content>
       <ion-item>
-        <ion-label>
-          Phase
-        </ion-label>
+        <ion-label> Phase </ion-label>
         &nbsp;&nbsp;&nbsp;1&nbsp;
-        <ion-toggle name="cantaloupe" color="medium" checked></ion-toggle>
+        <ion-toggle
+          name="cantaloupe"
+          [(ngModel)]="phase"
+          color="medium"
+          checked
+        ></ion-toggle>
         &nbsp;3&nbsp;&nbsp;&nbsp;
       </ion-item>
     </ion-card-content>
@@ -68,17 +98,20 @@
   <ion-card>
     <ion-card-content>
       <ion-item>
-        <ion-label>
-          Cable Type
-        </ion-label>
-        &nbsp;&nbsp;&nbsp;AI&nbsp;
-        <ion-toggle name="cantaloupe" color="medium" checked></ion-toggle>
-        &nbsp;Cu&nbsp;&nbsp;&nbsp;
+        <ion-label> Cable Type </ion-label>
+        &nbsp;&nbsp;&nbsp;AL&nbsp;
+        <ion-toggle
+          name="cantaloupe"
+          [(ngModel)]="cable_type"
+          color="medium"
+          checked
+        ></ion-toggle>
+        &nbsp;CU&nbsp;&nbsp;&nbsp;
       </ion-item>
     </ion-card-content>
   </ion-card>
 
-  <ion-card class="card" mode="ios">
+  <!-- <ion-card class="card" mode="ios">
     <ion-card-content>
       <ion-item>
         <ion-label>
@@ -87,27 +120,19 @@
         <ion-input></ion-input>M
       </ion-item>
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 
-  <ion-card (click)="gotoPlacement()" class="card" mode="ios">
-    <ion-card-content style="text-align: left;">
-      <ion-label style="color: black;">Placement</ion-label>
-      <ion-icon
-        slot="end"
-        size="large"
-        slot="end"
-        name="chevron-forward-outline"
-        style="float: right;"
-      ></ion-icon>
-    </ion-card-content>
-  </ion-card>
-
-  <div style="text-align: center; padding: 2%;">
+  <div style="text-align: center; padding: 2%">
     <ion-text>*Placement Info*</ion-text>
   </div>
 
   <div>
-    <ion-button style="width: 80%; margin: 10%;" (click)="openDialog()" color="warning">
+    <ion-button
+      style="width: 80%; margin: 10%"
+      (click)="presentModal()"
+      color="warning"
+      [disabled]="placement==undefined || placement==''"
+    >
       CALCULATE
     </ion-button>
   </div>

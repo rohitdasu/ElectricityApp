@@ -1,0 +1,30 @@
+<ion-toolbar>
+  <ion-icon
+    (click)="dismiss()"
+    name="close"
+    slot="end"
+    style="padding: 5%"
+    size="large"
+  ></ion-icon>
+</ion-toolbar>
+<ion-content>
+  <ion-card mode="ios" style="padding: 5%">
+    <ion-grid>
+      <ion-row>
+        <h1 class="center">Result</h1>
+      </ion-row>
+      <ion-row style="margin-top: 5%">
+        <ion-item class="center">
+          <ion-label>Cable Type:</ion-label>&nbsp;<ion-text
+            >{{cableType}}</ion-text
+          >
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item class="center">
+          <ion-label>Area:</ion-label>&nbsp;<ion-text>{{area}}</ion-text>
+        </ion-item>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-content>

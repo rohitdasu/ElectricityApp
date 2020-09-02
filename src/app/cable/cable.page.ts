@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { Router, ActivatedRoute } from "@angular/router";
+import { MatDialog } from "@angular/material/dialog";
+import { ModalController } from "@ionic/angular";
+import { ResultPage } from "../result/result.page";
+import { ApiService } from "../shared/api.service";
 
 @Component({
   selector: "app-cable",
@@ -8,58 +11,115 @@ import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
   styleUrls: ["./cable.page.scss"],
 })
 export class CablePage implements OnInit {
-  power: number;
-  voltage: string;
-  conductor: string;
-  cover: string;
-  phase: string;
-  cable_type: string;
-  length: string;
-  placement: string;
+  // power: number;
+  voltage: any;
+  conductor: any;
+  cover: any;
+  phase: any;
+  cable_type: any;
+  private sub: any;
+  // length: ;
+  placement: any;
+  data;
 
-  constructor(private router: Router, public dialog: MatDialog) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    public modalController: ModalController,
+    private api: ApiService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.sub = this.route.params.subscribe((params) => {
+      this.data = params;
+      this.placement = this.data.id;
+    });
+  }
   gotoPlacement() {
-    this.router.navigate(["/placements"]);
+    this.router.navigate(["/placements",{data:'cable'}]);
   }
-  openDialog() {
-    this.dialog.open(DialogDataExampleDialog);
-  }
-  voltageFunc(event) {
-    if (event["detail"].checked == true) {
-      this.voltage = "VOLTAGE_400";
-    } else {
-      this.voltage = "VOLTAGE_240";
-    }
-  }
-  coverFunc(event) {
-    if (event["detail"].checked == true) {
-      this.cover = "PEX";
-    } else {
-      this.cover = "PVC";
-    }
-  }
-  phaseFunc(event){
-    if (event["detail"].checked == true) {
-      this.phase = "PHASE_3";
-    } else {
-      this.phase = "PHASE_1";
-    }
-  }
-  cableFunc(event){
-    if (event["detail"].checked == true) {
-      this.cable_type = "Cu";
-    } else {
-      this.cable_type = "AI";
-    }
-  }
-}
 
-@Component({
-  selector: "cable-dialog",
-  templateUrl: "cable-dialog.page.html",
-})
-export class DialogDataExampleDialog {
-  constructor() {}
+  async presentModal() {
+    this.layingsProcedure();
+    let voltage, conductor, cover, phase, cable_type, placement;
+    if (this.voltage == true) {
+      voltage = "VOLTAGE_400";
+    } else {
+      voltage = "VOLTAGE_240";
+    }
+
+    if (this.conductor == true) {
+      conductor = "MULTI";
+    } else {
+      conductor = "SINGLE";
+    }
+
+    if (this.cover == true) {
+      cover = "PEX";
+    } else {
+      cover = "PVC";
+    }
+
+    if (this.phase == true) {
+      phase = "PHASE_3";
+    } else {
+      phase = "PHASE_1";
+    }
+
+    if (this.cable_type == true) {
+      cable_type = "CU";
+    } else {
+      cable_type = "AL";
+    }
+
+    const modal = await this.modalController.create({
+      component: ResultPage,
+      componentProps: {
+        voltage: voltage,
+        conductor: conductor,
+        cover: cover,
+        phase: phase,
+        cable_type: cable_type,
+        placement: this.placement,
+      },
+    });
+    return await modal.present();
+  }
+  layingsProcedure() {
+    let conductor, cover, phase, cable_type;
+
+    if (this.conductor == true) {
+      conductor = "MULTI";
+    } else {
+      conductor = "SINGLE";
+    }
+
+    if (this.cover == true) {
+      cover = "PEX";
+    } else {
+      cover = "PVC";
+    }
+
+    if (this.phase == true) {
+      phase = "PHASE_3";
+    } else {
+      phase = "PHASE_1";
+    }
+
+    if (this.cable_type == true) {
+      cable_type = "CU";
+    } else {
+      cable_type = "AL";
+    }
+    let x = {
+      cabelType: cable_type,
+      cableCover: cover,
+      conductor: conductor,
+      phase: phase,
+      placementId: this.placement,
+    };
+    this.api
+      .postLaying(x)
+      .subscribe((val) => (this.placement = val["0"].placements));
+  }
 }

@@ -5,12 +5,33 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root",
 })
 export class ApiService {
-  private placementUrl: string =
-    "https://el-backend-ohs2vesm3q-lz.a.run.app/api/placements";
+  private apiUrl: string = "https://el-backend-ohs2vesm3q-lz.a.run.app";
+
   constructor(private http: HttpClient) {}
   getPlacements() {
-    return this.http.get(this.placementUrl, {
-      // headers: { Accept: "*/*", "Content-Type": "application/json" },
+    return this.http.get(this.apiUrl + "/api/placements", {
+      headers: { Accept: "*/*" },
+    });
+  }
+  postCable(x: any) {
+    return this.http.post(this.apiUrl + "/api/cable", x, {
+      headers: {
+        Accept: "*/*",
+      },
+    });
+  }
+  postLaying(x) {
+    return this.http.post(this.apiUrl + "/api/layingprocedure", x, {
+      headers: {
+        Accept: "*/*",
+      },
+    });
+  }
+  postLoad(x: any) {
+    return this.http.post(this.apiUrl + "/api/load", x, {
+      headers: {
+        'Content-Type':'application/json'
+      },
     });
   }
 }
