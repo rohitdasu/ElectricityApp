@@ -34,6 +34,7 @@ export class LoadPage implements OnInit {
       this.data = params;
       this.placement = this.data.id;
     });
+    this.layingsProcedure();
   }
   gotoPlacement() {
     this.router.navigate(["/placements", { data: "load" }]);
